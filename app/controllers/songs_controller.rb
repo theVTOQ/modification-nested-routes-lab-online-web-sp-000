@@ -29,7 +29,7 @@ class SongsController < ApplicationController
       if Author.exists?(params[:author_id])
         @song = Song.new(author_id: params[:author_id])
       else
-
+        redirect_to artists_path
       end
     end
     @song = Song.new
