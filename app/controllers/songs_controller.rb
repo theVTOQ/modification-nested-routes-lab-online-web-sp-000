@@ -47,14 +47,13 @@ class SongsController < ApplicationController
   end
 
   def edit
+    song = Song.find_by(id: params[:id])
     if params[:author_id]
-      if Author.exists?(params[:author_id])
+      author = Author.find_by(id: params[:author_id])
 
-      else
+      if author.nil? || song.author != author
         redirect_to artists_path
       end
-    else
-      @song = Song.find(params[:id])
     end
   end
 
